@@ -1,6 +1,6 @@
 """ This work is licensed under a Creative Commons Attribution 3.0 Unported License.
     Frank Zalkow, 2012-2013 
-    Editeb by Andrew Ferg, 2016 """
+    Edited by Andrew Ferg, 2016 """
 
 import numpy as np
 from matplotlib import pyplot as plt
