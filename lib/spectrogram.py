@@ -109,3 +109,59 @@ def savespec(audiopath, plotpath, binsize=2**10, colormap="Greys"):
     plt.savefig(plotpath, dpi = height) 
     plt.close()
     print("Spectrogram saved to " + plotpath + ".")
+
+""" save spectrogram to file"""
+def savespecsmall(audiopath, plotpath, binsize=2**10, colormap="Greys"):
+    samplerate, samples = wav.read(audiopath)
+    s = stft(samples, binsize)
+    
+    sshow, freq = logscale_spec(s, factor=1.0, sr=samplerate)
+    ims = 20.*np.log10(np.abs(sshow)/10e-6) # amplitude to decibel
+    
+    sizes = np.shape(np.transpose(ims))
+    height = float(sizes[0])
+    width = float(sizes[1])
+
+    fig = plt.figure()
+    fig.set_size_inches((width/height)/2, 0.5, forward=False)
+    ax = plt.Axes(fig, [0., 0., 1., 1.])
+    ax.set_axis_off()
+    fig.add_axes(ax)
+
+    ax.imshow(np.transpose(ims), 
+              origin="lower", 
+              cmap=colormap, 
+              vmin=0,
+              vmax=230,
+              interpolation="none")
+    plt.savefig(plotpath, dpi = height) 
+    plt.close()
+    print("Spectrogram saved to " + plotpath + ".")
+
+""" save spectrogram to file"""
+def savespecxsmall(audiopath, plotpath, binsize=2**10, colormap="Greys"):
+    samplerate, samples = wav.read(audiopath)
+    s = stft(samples, binsize)
+    
+    sshow, freq = logscale_spec(s, factor=1.0, sr=samplerate)
+    ims = 20.*np.log10(np.abs(sshow)/10e-6) # amplitude to decibel
+    
+    sizes = np.shape(np.transpose(ims))
+    height = float(sizes[0])
+    width = float(sizes[1])
+
+    fig = plt.figure()
+    fig.set_size_inches((width/height)/4, 0.25, forward=False)
+    ax = plt.Axes(fig, [0., 0., 1., 1.])
+    ax.set_axis_off()
+    fig.add_axes(ax)
+
+    ax.imshow(np.transpose(ims), 
+              origin="lower", 
+              cmap=colormap, 
+              vmin=0,
+              vmax=230,
+              interpolation="none")
+    plt.savefig(plotpath, dpi = height) 
+    plt.close()
+    print("Spectrogram saved to " + plotpath + ".")
