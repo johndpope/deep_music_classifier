@@ -88,11 +88,12 @@ if __name__ == "__main__":
     model = tflearn.DNN(network, tensorboard_verbose=0)
     model.fit({'input': X}, 
               {'target': Y}, 
-              n_epoch=20,
+              n_epoch=50,
               validation_set=({'input': testX}, {'target': testY}),
               batch_size=25,
               shuffle=True,
               snapshot_epoch=True,
-              snapshot_step=100,  
+              snapshot_step=300,  
               show_metric=True, 
               run_id='convnet_genre')
+    model.save("genreNet_xsmall_50epochs.tfl")
