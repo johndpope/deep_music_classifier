@@ -2,3 +2,6 @@ genres/*
 genres_wav/*
 *.pyc
 mnist/*
+trained_models/*
+logs/*
+__pycache__/*
